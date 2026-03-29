@@ -686,12 +686,19 @@
 function checkPw(){
   if(document.getElementById('pwInput').value==='smittenworkshop'){
     document.getElementById('passwordGate').style.display='none';
-    document.getElementById('appContent').style.display='block';
+    document.getElementById('welcomeGate').style.display='flex';
   } else {
     const e=document.getElementById('pwError'); e.textContent='Wrong password'; e.style.opacity='1';
   }
 }
 </script>
+
+<div id="welcomeGate" style="display:none;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1.5em;position:relative;z-index:10000;background:#0a0a0f;">
+  <div style="font-family:'Clash Display',sans-serif;font-size:3.5rem;font-weight:800;color:#fff;text-align:center;line-height:1.15;">Welcome to<br>the Workshop</div>
+  <div style="color:rgba(255,255,255,0.5);font-size:1.1rem;max-width:400px;text-align:center;line-height:1.5;">Get ready for an hour of wild ideas, big thinking, and zero bad answers.</div>
+  <button class="btn btn-primary" onclick="document.getElementById('welcomeGate').style.display='none';document.getElementById('appContent').style.display='block';" style="font-size:1rem;padding:0.8em 2.5em;margin-top:0.5em;">Let's Go</button>
+</div>
+
 <div id="appContent" style="display:none;">
 <div class="ambient-mesh">
   <div class="orb orb-1"></div>
