@@ -135,6 +135,31 @@
   }
   .btn-ghost:hover { border-color: var(--border-light); color: var(--text); background: var(--surface-2); }
 
+  /* Mobile-friendly touch targets */
+  @media (max-width: 768px) {
+    .btn-ghost {
+      font-size: 0.95rem;
+      padding: 0.7em 1.4em;
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .shortcut-hint {
+      bottom: 0.6rem; right: 0.6rem; gap: 0.6em;
+    }
+    .shortcut-hint .fs-btn {
+      font-size: 0.85em;
+      padding: 0.4em 0.7em;
+      min-height: 44px;
+      min-width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .session-controls {
+      gap: 0.4em;
+    }
+  }
+
   .hidden { display: none !important; }
 
   /* ── WELCOME ── */
@@ -810,8 +835,8 @@ function checkPw(){
 <div class="confetti-container" id="confettiContainer"></div>
 
 <div class="shortcut-hint">
-  <span><kbd>Space</kbd> pause</span>
-  <span><kbd>&rarr;</kbd> skip</span>
+  <button class="fs-btn" onclick="togglePause()"><kbd>Space</kbd> pause</button>
+  <button class="fs-btn" onclick="skipPhase()"><kbd>&rarr;</kbd> skip</button>
   <button class="fs-btn" onclick="toggleFullscreen()"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg>fullscreen</button>
 </div>
 
