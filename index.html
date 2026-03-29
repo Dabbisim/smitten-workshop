@@ -678,7 +678,7 @@
 
 <div id="passwordGate" style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1em;z-index:10000;position:relative;">
   <div style="font-family:'Clash Display',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.2em;">Enter Password</div>
-  <input id="pwInput" type="password" placeholder="Password" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.7em 1.2em;font-size:1rem;color:#fff;font-family:'Inter',sans-serif;outline:none;width:260px;text-align:center;" onkeydown="if(event.key==='Enter')checkPw()">
+  <input id="pwInput" type="text" placeholder="Password" autocomplete="off" data-1p-ignore style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.7em 1.2em;font-size:1rem;color:#fff;font-family:'Inter',sans-serif;outline:none;width:260px;text-align:center;-webkit-text-security:disc;" onkeydown="if(event.key==='Enter')checkPw()">
   <button class="btn btn-primary" onclick="checkPw()" style="font-size:0.95rem;padding:0.7em 2em;">Enter</button>
   <div id="pwError" style="color:#FF509B;font-size:0.8rem;opacity:0;"></div>
 </div>
