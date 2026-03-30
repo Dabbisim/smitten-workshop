@@ -233,12 +233,14 @@
     /* Sharing */
     .sharing-main {
       padding: 1rem;
+      justify-content: flex-start;
+      padding-top: 1.5rem;
     }
     .sharing-group-title {
       font-size: 1.8rem;
     }
     .sharing-rounds-list {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       max-width: 100%;
       gap: 0.5rem;
     }
@@ -257,8 +259,18 @@
       font-size: 2rem;
     }
     .round-cards {
-      grid-template-columns: 1fr;
-      padding: 0.8rem 1rem 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      padding: 0.8rem 0.8rem 1.5rem;
+      gap: 0.5rem;
+    }
+    .round-card {
+      padding: 0.8rem;
+    }
+    .round-card-title {
+      font-size: 0.85rem;
+    }
+    .round-card-desc {
+      font-size: 0.72rem;
     }
     .finish-footer .fun-stat {
       font-size: 2rem;
@@ -685,6 +697,7 @@
   .sharing-main {
     flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 1.5rem 2rem; position: relative;
+    min-height: 0; overflow-y: auto;
   }
   .sharing-group-title {
     font-family: 'Clash Display', sans-serif; font-size: 2.5rem; font-weight: 700;
@@ -845,7 +858,7 @@
 </head>
 <body>
 
-<div id="passwordGate" style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1em;z-index:10000;position:relative;">
+<div id="passwordGate" style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1em;z-index:10000;position:relative;background:#08080C;padding:1.5rem;">
   <div style="font-family:'Clash Display',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.2em;">Enter Password</div>
   <input id="pwInput" type="text" placeholder="Password" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.7em 1.2em;font-size:16px;color:#fff;font-family:'Inter',sans-serif;outline:none;width:260px;max-width:85vw;text-align:center;-webkit-text-security:disc;" onkeydown="if(event.key==='Enter')checkPw()">
   <button class="btn btn-primary" onclick="checkPw()" style="font-size:0.95rem;padding:0.7em 2em;">Enter</button>
@@ -879,7 +892,7 @@ function checkPw(){
   <div class="welcome-label">Brainstorm Workshop</div>
   <h1>Smitten</h1>
   <div class="subtitle">4 rounds. Wild ideas. No bad answers.</div>
-  <div class="details">4 groups &middot; 12 min per round &middot; 1 hour total<br>Write &rarr; Discuss &rarr; Pick the best</div>
+  <div class="details">4 groups &middot; 11 min per round &middot; 1 hour total<br>Write &rarr; Discuss &rarr; Pick the best</div>
   <button class="btn btn-primary" onclick="startWorkshop()">Start Workshop</button>
 </div>
 
