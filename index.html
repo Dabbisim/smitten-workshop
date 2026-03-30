@@ -861,30 +861,47 @@
 </head>
 <body>
 
-<div id="passwordGate" style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1em;z-index:10000;position:relative;background:#08080C;padding:1.5rem;">
-  <div style="font-family:'Clash Display',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.2em;">Enter Password</div>
-  <input id="pwInput" type="text" placeholder="Password" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.7em 1.2em;font-size:16px;color:#fff;font-family:'Inter',sans-serif;outline:none;width:260px;max-width:85vw;text-align:center;-webkit-text-security:disc;" onkeydown="if(event.key==='Enter')checkPw()">
-  <button class="btn btn-primary" onclick="checkPw()" style="font-size:0.95rem;padding:0.7em 2em;">Enter</button>
-  <div id="pwError" style="color:#FF509B;font-size:0.8rem;opacity:0;"></div>
-</div>
+<div id="gateOverlay" style="position:fixed;inset:0;z-index:99999;background:#08080C;"></div>
 <script>
-function checkPw(){
-  if(document.getElementById('pwInput').value==='smittenworkshop'){
-    document.getElementById('passwordGate').style.display='none';
-    document.getElementById('welcomeGate').style.display='flex';
-  } else {
-    const e=document.getElementById('pwError'); e.textContent='Wrong password'; e.style.opacity='1';
+(function(){
+  // Step 1: Password gate
+  var overlay = document.getElementById('gateOverlay');
+  overlay.innerHTML = '<div style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1em;padding:1.5rem;">'
+    + '<div style="font-family:Clash Display,sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.2em;color:#fff;">Enter Password</div>'
+    + '<input id="pwInput" type="text" placeholder="Password" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.7em 1.2em;font-size:16px;color:#fff;font-family:Inter,sans-serif;outline:none;width:260px;max-width:85vw;text-align:center;-webkit-text-security:disc;">'
+    + '<button id="pwBtn" style="padding:0.75em 2.2em;font-size:0.95rem;font-weight:600;border:none;border-radius:10px;cursor:pointer;font-family:Inter,sans-serif;background:linear-gradient(135deg,#FF509B,#E0307A);color:#fff;box-shadow:0 4px 30px rgba(255,80,155,0.15);">Enter</button>'
+    + '<div id="pwError" style="color:#FF509B;font-size:0.8rem;opacity:0;"></div>'
+    + '</div>';
+  var inp = document.getElementById('pwInput');
+  var btn = document.getElementById('pwBtn');
+  inp.addEventListener('keydown', function(e){ if(e.key==='Enter') tryPw(); });
+  btn.addEventListener('click', tryPw);
+
+  function tryPw(){
+    if(inp.value === 'smittenworkshop'){
+      showWelcomeGate();
+    } else {
+      var err = document.getElementById('pwError');
+      err.textContent = 'Wrong password';
+      err.style.opacity = '1';
+    }
   }
-}
+
+  // Step 2: Welcome gate
+  function showWelcomeGate(){
+    overlay.innerHTML = '<div style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1.5em;padding:1.5rem;">'
+      + '<div style="font-family:Clash Display,sans-serif;font-size:clamp(2.2rem,8vw,3.5rem);font-weight:800;color:#fff;text-align:center;line-height:1.15;">Welcome to<br>the Workshop</div>'
+      + '<div style="color:rgba(255,255,255,0.5);font-size:clamp(0.9rem,3vw,1.1rem);max-width:400px;text-align:center;line-height:1.5;">Get ready for an hour of wild ideas, big thinking, and zero bad answers.</div>'
+      + '<button id="welcomeBtn" style="padding:0.85em 2.5em;font-size:1rem;font-weight:600;border:none;border-radius:12px;cursor:pointer;font-family:Inter,sans-serif;background:linear-gradient(135deg,#FF509B,#E0307A);color:#fff;box-shadow:0 4px 30px rgba(255,80,155,0.15);margin-top:0.5em;">Let\'s Go</button>'
+      + '</div>';
+    document.getElementById('welcomeBtn').addEventListener('click', function(){
+      overlay.remove();
+    });
+  }
+})();
 </script>
 
-<div id="welcomeGate" style="display:none;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1.5em;position:relative;z-index:10000;background:#0a0a0f;padding:1.5rem;">
-  <div style="font-family:'Clash Display',sans-serif;font-size:clamp(2.2rem,8vw,3.5rem);font-weight:800;color:#fff;text-align:center;line-height:1.15;">Welcome to<br>the Workshop</div>
-  <div style="color:rgba(255,255,255,0.5);font-size:clamp(0.9rem,3vw,1.1rem);max-width:400px;text-align:center;line-height:1.5;">Get ready for an hour of wild ideas, big thinking, and zero bad answers.</div>
-  <button class="btn btn-primary" onclick="document.getElementById('welcomeGate').style.display='none';document.getElementById('appContent').style.display='block';" style="font-size:1rem;padding:0.8em 2.5em;margin-top:0.5em;">Let's Go</button>
-</div>
-
-<div id="appContent" style="display:none;">
+<div id="appContent">
 <div class="ambient-mesh">
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
