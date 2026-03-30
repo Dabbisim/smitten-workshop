@@ -135,29 +135,173 @@
   }
   .btn-ghost:hover { border-color: var(--border-light); color: var(--text); background: var(--surface-2); }
 
-  /* Mobile-friendly touch targets */
+  /* ── MOBILE ── */
   @media (max-width: 768px) {
+    /* Touch targets */
     .btn-ghost {
-      font-size: 0.95rem;
-      padding: 0.7em 1.4em;
-      min-height: 44px;
-      min-width: 44px;
-    }
-    .shortcut-hint {
-      bottom: 0.6rem; right: 0.6rem; gap: 0.6em;
-    }
-    .shortcut-hint .fs-btn {
-      font-size: 0.85em;
-      padding: 0.4em 0.7em;
+      font-size: 0.9rem;
+      padding: 0.6em 1.2em;
       min-height: 44px;
       min-width: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
-    .session-controls {
-      gap: 0.4em;
+    .btn-primary {
+      min-height: 48px;
     }
+
+    /* Session header */
+    .session-header {
+      padding: 0.5rem 0.8rem;
+    }
+    .session-badge {
+      font-size: 0.6rem;
+      padding: 0.3em 0.7em;
+    }
+    .progress-bar-wrap {
+      margin: 0 0.6rem;
+      max-width: 120px;
+    }
+    .session-controls {
+      gap: 0.3em;
+    }
+
+    /* Session main content */
+    .session-main {
+      padding: 0.5rem 1rem 0.8rem;
+    }
+    .constraint-title {
+      font-size: 1.3rem;
+    }
+    .constraint-desc {
+      font-size: 0.85rem;
+      max-width: 340px;
+    }
+    .constraint-box {
+      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+      max-width: 360px;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Timer */
+    .timer-wrap {
+      width: 140px;
+      height: 140px;
+    }
+    .timer-text {
+      font-size: 3rem;
+    }
+
+    /* Phase instructions */
+    .phase-instructions {
+      font-size: 0.8rem;
+      max-width: 320px;
+    }
+
+    /* Welcome */
+    #welcome h1 {
+      font-size: 3.5rem;
+    }
+    #welcome .subtitle {
+      font-size: 1rem;
+    }
+    #welcome .details {
+      font-size: 0.78rem;
+    }
+
+    /* Session intro */
+    .intro-title {
+      font-size: 3rem !important;
+      max-width: 90vw;
+    }
+    .intro-desc {
+      font-size: 0.95rem !important;
+      max-width: 85vw;
+    }
+
+    /* Between screen */
+    #between h2 {
+      font-size: 2rem;
+    }
+    #between p {
+      font-size: 0.95rem;
+      max-width: 85vw;
+    }
+
+    /* Sharing */
+    .sharing-main {
+      padding: 1rem;
+    }
+    .sharing-group-title {
+      font-size: 1.8rem;
+    }
+    .sharing-rounds-list {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      gap: 0.5rem;
+    }
+    .sharing-round-item {
+      padding: 0.6rem 0.8rem;
+    }
+    .sharing-round-item textarea {
+      font-size: 16px; /* prevents iOS zoom on focus */
+    }
+
+    /* Finish */
+    .finish-header {
+      padding: 1.5rem 1rem 0.8rem;
+    }
+    .finish-header h1 {
+      font-size: 2rem;
+    }
+    .round-cards {
+      grid-template-columns: 1fr;
+      padding: 0.8rem 1rem 1.5rem;
+    }
+    .finish-footer .fun-stat {
+      font-size: 2rem;
+    }
+
+    /* Times up overlay */
+    .times-up-text {
+      font-size: 3rem;
+    }
+    .times-up-sub {
+      font-size: 1rem;
+    }
+
+    /* Shortcut hint */
+    .shortcut-hint {
+      bottom: 0.5rem; right: 0.6rem; gap: 0.5em;
+    }
+    .shortcut-hint .fs-btn {
+      font-size: 0.8em;
+      padding: 0.35em 0.6em;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Ambient orbs - smaller for perf */
+    .ambient-mesh .orb-1 { width: 300px; height: 300px; }
+    .ambient-mesh .orb-2 { width: 250px; height: 250px; }
+    .ambient-mesh .orb-3 { width: 180px; height: 180px; }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 380px) {
+    .intro-title { font-size: 2.4rem !important; }
+    #welcome h1 { font-size: 2.8rem; }
+    .timer-wrap { width: 120px; height: 120px; }
+    .timer-text { font-size: 2.5rem; }
+    .constraint-title { font-size: 1.1rem; }
+    .sharing-group-title { font-size: 1.5rem; }
+    .finish-header h1 { font-size: 1.6rem; }
+    .session-header { padding: 0.4rem 0.5rem; }
+    .btn-ghost { font-size: 0.8rem; padding: 0.5em 0.8em; }
   }
 
   .hidden { display: none !important; }
@@ -530,7 +674,7 @@
   /* ── SHARING ── */
   #sharing {
     display: none; height: 100vh; flex-direction: column; align-items: center;
-    position: relative; z-index: 1;
+    position: relative; z-index: 1; overflow-y: auto;
   }
   .sharing-banner {
     width: 100%; padding: 0.7rem 0; text-align: center; font-size: 0.75rem; font-weight: 600;
@@ -703,7 +847,7 @@
 
 <div id="passwordGate" style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1em;z-index:10000;position:relative;">
   <div style="font-family:'Clash Display',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.2em;">Enter Password</div>
-  <input id="pwInput" type="text" placeholder="Password" autocomplete="off" data-1p-ignore style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.7em 1.2em;font-size:1rem;color:#fff;font-family:'Inter',sans-serif;outline:none;width:260px;text-align:center;-webkit-text-security:disc;" onkeydown="if(event.key==='Enter')checkPw()">
+  <input id="pwInput" type="text" placeholder="Password" autocomplete="off" data-1p-ignore data-lpignore="true" data-form-type="other" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.7em 1.2em;font-size:16px;color:#fff;font-family:'Inter',sans-serif;outline:none;width:260px;max-width:85vw;text-align:center;-webkit-text-security:disc;" onkeydown="if(event.key==='Enter')checkPw()">
   <button class="btn btn-primary" onclick="checkPw()" style="font-size:0.95rem;padding:0.7em 2em;">Enter</button>
   <div id="pwError" style="color:#FF509B;font-size:0.8rem;opacity:0;"></div>
 </div>
@@ -718,9 +862,9 @@ function checkPw(){
 }
 </script>
 
-<div id="welcomeGate" style="display:none;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1.5em;position:relative;z-index:10000;background:#0a0a0f;">
-  <div style="font-family:'Clash Display',sans-serif;font-size:3.5rem;font-weight:800;color:#fff;text-align:center;line-height:1.15;">Welcome to<br>the Workshop</div>
-  <div style="color:rgba(255,255,255,0.5);font-size:1.1rem;max-width:400px;text-align:center;line-height:1.5;">Get ready for an hour of wild ideas, big thinking, and zero bad answers.</div>
+<div id="welcomeGate" style="display:none;height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1.5em;position:relative;z-index:10000;background:#0a0a0f;padding:1.5rem;">
+  <div style="font-family:'Clash Display',sans-serif;font-size:clamp(2.2rem,8vw,3.5rem);font-weight:800;color:#fff;text-align:center;line-height:1.15;">Welcome to<br>the Workshop</div>
+  <div style="color:rgba(255,255,255,0.5);font-size:clamp(0.9rem,3vw,1.1rem);max-width:400px;text-align:center;line-height:1.5;">Get ready for an hour of wild ideas, big thinking, and zero bad answers.</div>
   <button class="btn btn-primary" onclick="document.getElementById('welcomeGate').style.display='none';document.getElementById('appContent').style.display='block';" style="font-size:1rem;padding:0.8em 2.5em;margin-top:0.5em;">Let's Go</button>
 </div>
 
