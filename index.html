@@ -1335,7 +1335,7 @@
       document.getElementById('startTimerWrap').classList.contains('hidden') ? togglePause() : beginPhaseTimer();
     }
     if (e.code === 'ArrowRight' && document.getElementById('session').style.display === 'flex') { e.preventDefault(); skipPhase(); }
-    if (e.code === 'Enter') {
+    if (e.code === 'Enter' && !document.getElementById('gateOverlay')) {
       if (document.getElementById('welcome').style.display !== 'none') startWorkshop();
       else if (document.getElementById('sessionIntro').style.display === 'flex') enterSession();
       else if (document.getElementById('between').style.display === 'flex') startNextSession();
